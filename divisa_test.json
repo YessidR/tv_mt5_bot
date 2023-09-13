@@ -1,0 +1,14 @@
+[
+    {
+        "symbol": "BTCUSD", 
+        "screener": "crypto", 
+        "exchange": "EXMO"
+    },
+    {
+        "symbol": "EURUSD", 
+        "screener": "forex", 
+        "exchange": "FX_IDC"
+    }
+]
+
+
