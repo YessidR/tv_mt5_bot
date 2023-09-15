@@ -1,0 +1,4 @@
+USER = 83011184
+PASSWORD = Synapse#2023
+SERVER = Exness-MT5Trial12
+path = C:/Program Files/MetaTrader 5/terminal64.exe

@@ -1,32 +1,33 @@
 import time
 import json
 from procesamiento.indicadores import variables_divisas
+from procesamiento.operaciones import initialize
 
-# from tradingview_ta import TA_Handler, Interval, Exchange, TradingView
 
-# Abre el archivo JSON
+# Abre el archivo con las credenciales para mt5
+with open('otros/credenciales.txt', 'r') as file:
+    content = file.read()
+
+USER = int(content.split("USER = ")[1].split()[0].strip("'"))
+PASSWORD = content.split("PASSWORD = ")[1].split()[0].strip('"')
+SERVER = content.split("SERVER = ")[1].split()[0].strip('"')
+
+# Inicia sesion en MT5
+initialize(USER, PASSWORD, SERVER)
+
+
+# Abre el archivo JSON para los indicadores
 with open('otros/divisas.json', 'r') as archivo:
     # Carga el contenido del archivo en una lista de diccionarios
     divisas = json.load(archivo)
 
-# Guarda los archivos en un JSON
-# with open('divisas_con_intervalo.json', 'w') as archivo_salida:
-#     json.dump(divisas, archivo_salida, indent=4)
+# Variables para los indicadores de las velas
+m5  = (variables_divisas(divisas, '5m'))
+m15 = (variables_divisas(divisas, '15m'))
+m30 = (variables_divisas(divisas, '30m'))
+h1  = (variables_divisas(divisas, '1h'))
+h4  = (variables_divisas(divisas, '4h'))
 
-# Este valor es variable dependiendo del tamaño de la vela...
-num = 0
-# inicio = time.time()
-
-Interval = ['5m', '15m', '30m']
-
-
-for i in range(5):
-    if num < 5:
-        for x in range(len(Interval)):
-        # print(Interval[x])
-        # Interval = Interval.INTERVAL_1_MINUTE
-            print(variables_divisas(divisas, Interval[x]))
-        print()
-        time.sleep(30)
-    num += 1
+vela = [m5, m15, m30, h1, h4]
+print(vela)
 

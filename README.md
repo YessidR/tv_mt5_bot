@@ -16,7 +16,7 @@ TV_MT5_BOT/
 ├── procesamiento/
 │   ├── __init__.py
 │   |── indicadores.py
-│   └── long_short.py
+│   └── operaciones.py
 └── otros/
     ├── __init__.py
     ├── divisas.json
@@ -32,7 +32,7 @@ Contiene todos los archivos.py que se encargan de recolectar la informacion de l
 
 - `indicadores/_init__.py`: Archivo requerido para hacer que Python reconozca los archivos que contiene el directio como paquetes de un módulo.
 - `indicadores/indicadores.py`: Este archivo realiza todo el procesamiento requerido para obtener los indicadores de las divisas.
-- `long_short.py`: Este archivo envia las ordenes a MT5 para abrir operaciones de forma automatica.
+- `indicadores/operaciones.py`: Este archivo envia las ordenes a MT5 para abrir operaciones de forma automatica.
 
 ### otros/
 
@@ -40,4 +40,4 @@ Contiene todos los archivos.py que se encargan de recolectar la informacion de l
 
 - `otros/_init__.py`: Archivo requerido para hacer que Python reconozca los archivos que contiene el directio como paquetes de un módulo.
 - `otros/divisas.json`: Este archivo contiene la informacion requerida de las diferentes divisas.
-- `credenciales.txt`: Este archivo contiene las credenciales para ingresar a MetaTrader5.
+- `otros/credenciales.txt`: Este archivo contiene las credenciales para ingresar a MetaTrader5.
