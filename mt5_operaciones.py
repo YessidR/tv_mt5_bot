@@ -15,9 +15,6 @@ USER = int(content.split("USER = ")[1].split()[0].strip("'"))
 PASSWORD = content.split("PASSWORD = ")[1].split()[0].strip('"')
 SERVER = content.split("SERVER = ")[1].split()[0].strip('"')
 
-# print(USER)
-# print(PASSWORD)
-# print(SERVER)
 
 # retirar
 divisas = [{"symbol": "BTCUSD", "screener": "crypto", "exchange": "EXMO" },
@@ -49,26 +46,54 @@ balance = account_info_dict['balance']
 
 # para el valor del lotaje
 # lot = round(((balance/1000) * 0.3), 2)
-print(account_info_dict)
+# print(account_info_dict)
 
 m5 = (variables_divisas(divisas, '5m'))
+
+print()
+# print(m5)
+print()
+
+
 # print(m5)
 
 
 def operaciones(vela):
-    print(vela)
+    # print(vela)
+    # print()
+    orders = mt5.positions_get()
+
+    comments = [order.comment for order in orders]
+    # print(orders)
+    print(comments)
+    print()
     for i in range(len(vela)):
-        symbol = vela[i]['symbol']
-        tipo = vela[i]['tipo']
-        precio = vela[i]['precio']
-        interval = vela[i]['interval']
-        sl = vela[i]['sl']
-        tp = vela[i]['tp']
+        
         lot = round(((balance/1000) * 0.3), 2)
+        symbol = vela[i]['symbol']
+        interval = vela[i]['interval']
+        tipo = vela[i]['tipo']
         comentario = symbol + ' ' + tipo + ' ' + interval
+
+        if comentario not in comments:     
+            
+            request = {
+            'action': 5,
+            'symbol': symbol,
+            'volume': lot,
+            'price': vela[i]['precio'],
+            'sl': vela[i]['sl'],
+            'tp': vela[i]['tp'],
+            'comment': comentario
+            }
+
+
 
         # Agregar condicional:
         # Si comentario ya existe en operaciones de mt5, ignore
+        # orders = mt5.positions_get()
+
+
         # Revisar operaciones activas en mt5 
 
     
